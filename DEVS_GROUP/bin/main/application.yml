@@ -1,0 +1,73 @@
+server:
+  port: 8989
+  servlet:
+    context-path: /
+    
+  # ssl
+#  ssl:
+#    enabled: true
+#    key-store: /etc/letsencrypt/live/www.devsgroup.ml/keystore.p12
+#    key-store-password: 
+#    key-store-type: PKCS12
+#    key-alias: tomcat
+    
+    
+ssoDomain: www.devssso.ml
+ssoServerPort: 80
+
+
+# 서버 배포용    
+#clientDomain: www.devsgroup.ml
+#systemName: DEVS_GROUP
+#clientSocketProtocol: wss
+#clientProtocol: https
+
+
+# 로컬 테스트용
+clientDomain: localhost
+systemName: GROUP_TEMP
+clientSocketProtocol: ws
+clientProtocol: http
+
+  
+spring:  
+  batch:
+    job:
+      enabled: false
+      
+      
+  # oracle
+  datasource:
+    platform: oracle
+    url: jdbc:oracle:thin:@qclass.iptime.org:1521:xe
+    driver-class-name: oracle.jdbc.OracleDriver
+    username: bigfinal03
+    password: bigfinal03
+    
+  # mongodb
+  data:
+    mongodb:
+      uri: mongodb+srv://devs:devs@devsmongo-t0vur.gcp.mongodb.net/INSTAGRAM?retryWrites=true&w=majority
+  
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+
+## jpa
+  jpa:
+    database: oracle
+    hibernate:
+      ddl-auto: none
+
+## devtools  
+  devtools:
+    livereload:
+      enabled: true
+    
+    
+logging.level:
+  root: warn
+  org.springframework:
+    boot: info
+  com.devs.group: debug
